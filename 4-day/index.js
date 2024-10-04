@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 app.use(express.json());
 const MONGO_URI =
   "mongodb+srv://karademirbayburt10:Zvr1YVcvrSSCvYJV@cluster0.gnbdk.mongodb.net/btk-akademi";
-
+const Ogrenci = require('./routes/ogrenci');
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
@@ -19,11 +19,7 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-const OgrenciSchema = new mongoose.Schema({
-  adi: { type: String },
-  numarasi: { type: Number },
-  telefon_numarasi: { type: String },
-});
+
 const OgretmenSchema = new mongoose.Schema({
   adi: { type: String },
   alani: { type: String },
@@ -35,7 +31,7 @@ const VeliSchema = new mongoose.Schema({
   ogrenci_adi: { type: String },
 });
 
-const Ogrenci = mongoose.model("Ogrenci", OgrenciSchema);
+
 const Ogretmen = mongoose.model("Ogretmen", OgretmenSchema);
 const Veli = mongoose.model("Veli", VeliSchema);
 
