@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Ogrenci = require("../models/ogrenci");
+const middleware = require("../middlewares/arayagiren");
 
 
-
-router.route('/').post(async (req, res, next) => {
+router.route('/').post(middleware,async (req, res, next) => {
     const { adi, numarasi, telefon_numarasi } = req.body;
   
     const ogrenci = await Ogrenci.create({
@@ -15,12 +15,12 @@ router.route('/').post(async (req, res, next) => {
     return res.status(201).json(ogrenci);
   })
 
-  router.route('/').get(async (req, res, next) => {
+  router.route('/').get(middleware,async (req, res, next) => {
     const ogrenci = await Ogrenci.find();
     return res.status(200).json(ogrenci);
   })
 
-  router.route('/:id').get(
+  router.route('/:id').get(middleware,
     async (req, res, next) => {
         const { id } = req.params;
         const ogrenci = await Ogrenci.findById(id);
@@ -29,7 +29,7 @@ router.route('/').post(async (req, res, next) => {
   )
 
 
-  router.route('/:id').put( async (req, res, next) => {
+  router.route('/:id').put(middleware, async (req, res, next) => {
     const { id } = req.params;
     const {adi,numarasi,telefon_numarasi} = req.body
   
@@ -41,7 +41,7 @@ router.route('/').post(async (req, res, next) => {
     return res.status(200).json(ogrenci);
   })
 
-  router.route('/:id').delete(async (req, res, next) => {
+  router.route('/:id').delete(middleware,async (req, res, next) => {
     const { id } = req.params;
   
     const ogrenci = await Ogrenci.findByIdAndDelete(id);
