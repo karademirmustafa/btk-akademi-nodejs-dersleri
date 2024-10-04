@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 app.use(express.json());
 const MONGO_URI =
   "mongodb+srv://karademirbayburt10:Zvr1YVcvrSSCvYJV@cluster0.gnbdk.mongodb.net/btk-akademi";
-const Ogrenci = require('./routes/ogrenci');
+const Ogrenci = require('./models/ogrenci');
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
