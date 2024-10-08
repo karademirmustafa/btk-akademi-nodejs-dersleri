@@ -8,7 +8,7 @@ cb(null, 'uploads')
 },
 filename: function(req, file, cb) {
 const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-cb(null, file.fieldname + '-' + uniqueSuffix + "-" + file.originalname)
+cb(null, "Fatih" + '-' + uniqueSuffix + "-" + file.originalname)
 }
 })
 const fileFilter = (req, file, cb) => {
@@ -19,9 +19,9 @@ const fileFilter = (req, file, cb) => {
 // }
 cb(null, true)
 }
-const upload = multer({ storage: storage, fileFilter: fileFilter }).single("gormuyoruz")
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-router.route("/").post(upload,async (req, res, next) => {
+router.route("/").post(upload.array('gormuyoruz',5),async (req, res, next) => {
     
     res.json(true)
 });
