@@ -17,7 +17,7 @@ bot.on('text', async (msg) => {
     console.log(text, "TEXT");
 
     try {
-        const response = await axios.get(`http://localhost:6000/gets/${text}/ask`);
+        const response = await axios.get(`http://localhost:6000/get/${text}`);
         const result = response.data;
         bot.sendMessage(chatId, `Burç yorumun sonucu:${JSON.stringify(result)}`);
     } catch (error) {
