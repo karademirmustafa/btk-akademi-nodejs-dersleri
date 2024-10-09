@@ -7,9 +7,11 @@ app.use(express.json());
 const ogrenciRoute = require("./routes/ogrenci");
 const uploadRoute = require("./routes/upload");
 const ogretmenRoute = require("./routes/ogretmen")
+const authRoute = require("./routes/auth");
 app.use("/ogrenci", ogrenciRoute);
 app.use("/upload", uploadRoute);
 app.use('/ogretmen',ogretmenRoute)
+app.use('/auth',authRoute)
 const MONGO_URI =
   "mongodb+srv://karademirbayburt10:Zvr1YVcvrSSCvYJV@cluster0.gnbdk.mongodb.net/btk-akademi";
 mongoose
