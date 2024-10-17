@@ -3,15 +3,17 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
+const cors = require("cors");
 const errorHandler = require("./middlewares/error");
+app.use(cors());
+app.use(express.json());
 // Routes
 const ogretmenRoute = require("./routes/ogretmen");
 const loggerMiddleware = require("./middlewares/logger");
 
-app.use(loggerMiddleware);
-app.use('/ogretmen',ogretmenRoute);
 
-app.use(express.json());
+app.use('/ogretmen',ogretmenRoute);
+app.use(loggerMiddleware);
 
 
 
