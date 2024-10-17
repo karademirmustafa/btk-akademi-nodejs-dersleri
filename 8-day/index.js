@@ -9,10 +9,13 @@ app.use(cors());
 app.use(express.json());
 // Routes
 const ogretmenRoute = require("./routes/ogretmen");
+const carRoute = require("./routes/carRouter");
+
 const loggerMiddleware = require("./middlewares/logger");
 
 
 app.use('/ogretmen',ogretmenRoute);
+app.use('/car',carRoute);
 app.use(loggerMiddleware);
 
 
